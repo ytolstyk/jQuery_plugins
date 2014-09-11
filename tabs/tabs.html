@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tabs</title>
+    <script src="./jquery-1.11.1.js"></script>
+    <script src="./tabs.js"></script>
+    <link href="./tabs.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <ul class='tabs' data-content-tabs="content-tabs">
+      <li><a href="#dog1" class="active">Dog 1</a></li>
+      <li><a href="#dog2">Dog 2</a></li>
+      <li><a href="#dog3">Dog 3</a></li>
+      <div id="content-tabs">
+        <div class="tab-pane active" id="dog1">
+          <p>dog 1</p>
+        </div>
+        <div class="tab-pane" id="dog2">
+          <p>dog 2</p>
+        </div>
+        <div class="tab-pane" id="dog3">
+          <p>dog 3</p>
+        </div>
+      </div>
+    </ul>
+    
+    <script>
+      $(function() {
+        $('.tabs').tabs();
+      });
+    </script>
+  </body>
+</html>
+
+
