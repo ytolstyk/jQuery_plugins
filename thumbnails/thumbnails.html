@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Cool Website</title>
+    <script src="./jquery-1.11.1.js"></script>
+    <script src="./thumbnails.js"></script>
+    <link href="./thumbnails.css" rel="stylesheet" type="text/css">
+  </head>
+
+  <body>
+    <div class="thumbnails">
+      <div class="items">
+        <img class="active" src="http://placekitten.com/g/200/300">
+        <img src="http://placekitten.com/g/200/301">
+        <img src="http://placekitten.com/g/200/302">
+        <img src="http://placekitten.com/g/200/303">
+        <img src="http://placekitten.com/g/200/304">
+      </div>
+    </div>
+
+    <script>
+      $(function() {
+        $('.thumbnails').thumbnails();
+      })
+    </script>
+  </body>
+</html>

@@ -4,8 +4,15 @@
 
 div.tab-pane {
   display: none;
+  transition: opacity 0.25s ease-in-out;
 }
 
 div.tab-pane.active {
   display: block;
+  opacity: 1;
+}
+
+div.tab-pane.transitioning {
+  display: block;
+  opacity: 0;
 }

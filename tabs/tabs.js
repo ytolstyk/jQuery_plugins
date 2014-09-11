@@ -9,11 +9,26 @@
   
   $.Tabs.prototype.clickTab = function () {
     event.preventDefault();
-    this.$contentTabs.children().removeClass("active");
-    $(event.currentTarget).addClass("active");
-    $($(event.target).attr("href")).addClass("active");
-  };
 
+    $(event.currentTarget).children("li").children().removeClass("active");
+    var that = this;
+    var $tabPane = $($(event.target).attr("href"));
+    this.$activeTab.one("transitionend", function () {
+      that.$activeTab.removeClass("transitioning");
+      $tabPane.addClass("transitioning");
+      setTimeout(function () {
+        $tabPane.addClass("active");        
+        $tabPane.removeClass("transitioning");
+        that.$activeTab = $tabPane;
+      }, 0);
+    });
+    
+    this.$activeTab.removeClass('active');    
+    this.$activeTab.addClass('transitioning');
+    
+    $(event.target).addClass("active");
+  };
+  
   $.fn.tabs = function () {
     return this.each(function () {
       new $.Tabs(this);

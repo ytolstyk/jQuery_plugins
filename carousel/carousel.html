@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <title>Carousel</title>
+    <script src="./jquery-1.11.1.js"></script>
+    <script src="./carousel.js"></script>
+    <link href="./carousel.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css"    
+      href="http://yui.yahooapis.com/3.17.2/build/cssreset/cssreset-min.css">
+  </head>
+
+  <body>
+        
+    <div class="carousel">
+      <div class="items">
+        <img src="http://placecorgi.com/260/" />
+        <img src="http://placecorgi.com/261/" />
+        <img src="http://placecorgi.com/262/" />
+        <img src="http://placecorgi.com/263/" />
+        <img src="http://placecorgi.com/264/" />
+        <img src="http://placecorgi.com/265/" />
+      </div>
+      <a href="javascript:void(0)" class="slide-left">Previous</a>
+      <a href="javascript:void(0)" class="slide-right">Next</a>      
+    </div>
+      
+    <script>
+      $(function() {
+        $('.carousel').carousel();
+      })
+    </script>
+    
+  </body>
+  
+</html>

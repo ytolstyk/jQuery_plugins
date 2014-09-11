@@ -1,0 +1,43 @@
+.carousel {
+  height: 500px;
+  width: 700px;
+  margin: 0 auto;
+}
+
+img {
+  display: block;
+}
+
+img:not(.active) {
+  display: none;
+}
+
+div.carousel > div.items {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+div.carousel > div.items > img {
+  position: absolute;
+  width: 100%;
+  top: 0;
+}
+
+div.carousel > div.items > img.active {
+  left: 0;
+  transition: left 0.5s linear;
+}
+
+div.carousel > div.items > img:not(.active) {
+  display: none;
+}
+
+div.carousel > div.items > img.active.left {
+  left: -100%;
+}
+
+div.carousel > div.items > img.active.right {
+  left: 100%;
+}
