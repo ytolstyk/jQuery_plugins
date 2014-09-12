@@ -79,8 +79,6 @@
     this.setGutterStart(direction);
   };
 
-
-  
   Thumbnails.prototype.setActiveThumb = function (matchingThumb) {
     $(".gutter img").removeClass("active");
     $(matchingThumb).addClass("active");

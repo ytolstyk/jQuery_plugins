@@ -3,11 +3,16 @@
   list-style: none;
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+}
+
 div.thumbnails {
+  margin: 0 auto;
+  width: 500px;
   position: relative;
-  border: 1px solid black;
-  height: 100px;
-  width: 100px;
+
 }
 
 div.thumbnails div.items img {
@@ -17,20 +22,21 @@ div.thumbnails div.items img {
   display: none;
 }
 
+.items {
+  border: 10px solid black;
+}
+
 div.thumbnails div.items img.active {
   display: block;
 }
 
 .imagenav {
+  margin-top: 20px;
   border: 2px solid black;
-  width: 500px;
-  height: 200px;
 }
 
 .gutter {
-  width: 100%;
   height: 50%;
-  border: 1px solid blue;
   display: inline-block;
 }
 
@@ -44,5 +50,8 @@ div.thumbnails div.items img.active {
 }
 
 .gutter img.active {
-  border: 2px solid grey;
+  border: 2px solid black;
+}
+.gutter a, ul {
+  display: inline-block;
 }
