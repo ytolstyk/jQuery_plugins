@@ -5,7 +5,6 @@
     this.$img = this.$el.find(".items img");
     this.displayedThumbnails = [0, 1, 2];
     this.$imageNav = $("<div class='imagenav'></div>");
-    this.currentImage = this.$img.find(".active");
     
     this.$imageNav.append($('<a href="javascript:void(0)" class="left">Left</a>'));
     this.$imageNav.append($('<ul class="gutter"></ul>'));
@@ -13,10 +12,14 @@
     this.$el.append(this.$imageNav);
     
     this.fillGutter();
-    this.setActiveImage();
-    this.setActiveThumb();
+    this.setActiveImage(this.$img[0]);
+    this.currentImage = $(this.$img[0]);
+    this.setActiveThumb($(".gutter img")[0]);
     
     $(this.$imageNav).on("click", "a", this.moveGutterStart.bind(this));
+    $(this.$imageNav).on("click", "li", this.changeMainImage.bind(this));
+    $(this.$imageNav).on("mouseenter", "li", this.previewMainImage.bind(this));
+    $(this.$imageNav).on("mouseleave", "li", this.resetMainImage.bind(this));
   };
 
   Thumbnails.prototype.fillGutter = function () {
@@ -26,6 +29,31 @@
       $li.append($(this.$img[this.displayedThumbnails[i]]).clone());
       $(".gutter").append($li);
     }
+  };
+  
+  Thumbnails.prototype.previewMainImage = function () {
+    var matchingURL = $(event.target).attr("src");
+    var newMainImage = $(".items img[src='" + matchingURL + "']");
+    this.previousImg = this.currentImg;
+    this.setActiveImage(newMainImage);
+  };
+   
+  Thumbnails.prototype.resetMainImage = function () {
+    this.setActiveImage(this.previousImg);
+  };
+   
+  Thumbnails.prototype.setActiveImage = function (newMainImage) {
+    this.currentImg = newMainImage;
+    this.$img.removeClass("active");
+    $(newMainImage).addClass("active");
+  };  
+   
+  Thumbnails.prototype.changeMainImage = function () {
+    this.setActiveThumb($(event.target));
+    var matchingURL = $(event.target).attr("src");
+    var newMainImage = $(".items img[src='" + matchingURL + "']");
+    this.previousImg = newMainImage;
+    this.setActiveImage(newMainImage);
   };
 
   Thumbnails.prototype.setGutterStart = function (direction) {    
@@ -51,14 +79,11 @@
     this.setGutterStart(direction);
   };
 
-  Thumbnails.prototype.setActiveImage = function () {
-    $(this.$img[0]).addClass("active");
-  };
+
   
-  Thumbnails.prototype.setActiveThumb = function () {
-    var matchingText = $(".active").attr("href");
-    var matchingThumb = $('.gutter img[href=' + matchingText + ']');
-    matchingThumb.addClass("active");
+  Thumbnails.prototype.setActiveThumb = function (matchingThumb) {
+    $(".gutter img").removeClass("active");
+    $(matchingThumb).addClass("active");
   };
 
   $.fn.thumbnails = function () {

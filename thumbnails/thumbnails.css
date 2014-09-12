@@ -42,3 +42,7 @@ div.thumbnails div.items img.active {
   display: inline-block;
   margin: 3px;
 }
+
+.gutter img.active {
+  border: 2px solid grey;
+}
